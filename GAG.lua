@@ -145,10 +145,8 @@ local function flashEffect(button)
 end
 
 local function countdownAndRandomize(button)
-    button.Text = "🎲 Randomizing..."
     flashEffect(button)
     randomizeNearbyEggs()
-    wait(0.5)
     button.Text = "🎲 Randomize Pets"
 end
 
