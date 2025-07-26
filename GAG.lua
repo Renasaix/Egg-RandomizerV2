@@ -20,7 +20,7 @@ local petTable = {
     ["Paradise Egg"] = { "Ostrich", "Peacock", "Capybara" },
     ["Dinosaur Egg"] = { "Raptor", "Triceratops", "Stegosaurus" },
     ["Primal Egg"] = { "Parasaurolophus", "Iguanodon", "Pachycephalosaurus" },
-    ["Zen Egg"] = { "Shiba Inu", "Tanuki", "Kappa", "Kitsune" },
+    ["Zen Egg"] = { "Shiba Inu", "Tanuki", "Kappa" },
 }
 
 local espEnabled = trueS
@@ -145,6 +145,10 @@ local function flashEffect(button)
 end
 
 local function countdownAndRandomize(button)
+    for i = 10, 1, -1 do
+        button.Text = "🎲 Randomize in: " .. i
+        wait(1)
+    end
     flashEffect(button)
     randomizeNearbyEggs()
     button.Text = "🎲 Randomize Pets"
@@ -160,19 +164,16 @@ frame.Position = UDim2.new(0, 20, 0, 100)
 frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Dark gray background
 frame.BackgroundTransparency = 0.3 -- 30% transparent
 frame.BorderSizePixel = 0
-local stroke = Instance.new("UIStroke", frame)
-stroke.Color = Color3.fromRGB(255, 0, 0)
-stroke.Thickness = 2
 frame.Parent = screenGui
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 10)
 
 local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1, 0, 0, 30)
 title.BackgroundTransparency = 1
-title.Text = "🐾 Pet Randomizer Max 🦊"
+title.Text = "Pet Pro Randomizer"
 title.Font = Enum.Font.FredokaOne
 title.TextSize = 22
-title.TextColor3 = Color3.fromRGB(255, 0, 0)
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 -- 👇 Dragging
 local drag = Instance.new("TextButton", title)
@@ -199,7 +200,7 @@ local randomizeBtn = Instance.new("TextButton", frame)
 randomizeBtn.Size = UDim2.new(1, -20, 0, 40)
 randomizeBtn.Position = UDim2.new(0, 10, 0, 40)
 randomizeBtn.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
-randomizeBtn.Text = "🎲 Randomize Pets 💀"
+randomizeBtn.Text = "🎲 Randomize Pets"
 randomizeBtn.TextSize = 20
 randomizeBtn.Font = Enum.Font.FredokaOne
 randomizeBtn.TextColor3 = Color3.new(1, 1, 1)
@@ -257,4 +258,9 @@ autoBtn.MouseButton1Click:Connect(function()
                     autoRunning = false
                     autoBtn.Text = "🔁 Auto Randomize: OFF"
                     return
-                end 
+                end
+            end
+            wait(1)
+        end
+    end)()
+end)
